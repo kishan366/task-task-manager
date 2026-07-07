@@ -47,7 +47,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     // Check login details
     if (loginUser(email, password)) {
         alert('Login successful!');
-        window.location.href = 'dashboard.html';
+        window.location.href = '/pages/dashboard.html';
     } else {
         alert('Invalid email or password. Please try again.');
     }
