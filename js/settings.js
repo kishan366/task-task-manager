@@ -71,7 +71,7 @@ function executeSignOut() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('currency_' + (activeUser ? activeUser.email : ''));
     setTimeout(function() {
-        window.location.href = 'index.html';
+        window.location.href = '/';
     }, 100);
 }
 
