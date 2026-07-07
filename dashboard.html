@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.0.0/remixicon.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand">
+             FinTrack Pro
+            <span>Enterprise Finance</span>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+        <button class="add-btn-sidebar" id="addTransBtn">+ Add Transaction</button>
+    </div>
+
+    <div class="main-content">
+        
+        <div class="top-header">
+            <span class="user-name" id="userDisplay">Guest</span>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="page-title">
+            <h1>Financial Overview</h1>
+            <p>Real-time tracking application</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card">
+                <div class="card-title">Current Balance</div>
+                <div class="card-value balance-val" id="totalBalance">$0.00</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Income</div>
+                <div class="card-value income-val" id="totalIncome">$0.00</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Expense</div>
+                <div class="card-value expense-val" id="totalExpense">$0.00</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Transactions</div>
+                <div class="card-value trans-val" id="totalTransactionsCount">0</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            
+            <div class="left-col">
+                <div class="widget">
+                    <div class="widget-title">Cash Flow Analysis</div>
+                    <div class="chart-container">
+                        <div class="chart-y-axis">
+                            <span>1.0</span><span>0.9</span><span>0.8</span><span>0.7</span><span>0.6</span>
+                            <span>0.5</span><span>0.4</span><span>0.3</span><span>0.2</span><span>0.1</span><span>0</span>
+                        </div>
+        
+                        <div class="chart-canvas-wrapper">
+                            <div class="chart-grid-bg"></div>
+                            <div class="chart-bars-container" id="chartBarsArea">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="chart-footer-legend">
+                        <span class="legend-item"><span class="legend-color income-color"></span> Income</span>
+                        <span class="legend-item"><span class="legend-color expense-color"></span> Expenses</span>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-title">All Transactions</div>
+                    <div class="table-filters">
+                        <input type="text" id="searchInput" placeholder="Search transactions...">
+                        <select id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>DESCRIPTION</th>
+                                <th>CATEGORY</th>
+                                <th>AMOUNT</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="widget">
+                    <div class="widget-title">Preferences</div>
+                    <div class="dark-mode-toggle">
+                        <label for="darkModeToggle" style="margin-bottom: 0;">Dark Mode</label>
+                        <div class="toggle-switch" id="darkModeToggle"></div>
+                    </div>
+                    <button class="reset-btn" id="resetDataBtn"> Reset All Data</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="transactionModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Add Transaction</h2>
+                <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+            </div>
+            
+            <form id="modalForm">
+                <div class="modal-group">
+                    <label for="modalType">Type</label>
+                    <select id="modalType" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+
+                <div class="modal-group">
+                    <label for="modalDesc">Description</label>
+                    <input type="text" id="modalDesc" placeholder="e.g. Amazon, Salary, Coffee" required>
+                </div>
+
+                <div class="modal-row">
+                    <div class="modal-group">
+                        <label for="modalAmount">Amount</label>
+                        <input type="number" id="modalAmount" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="modal-group">
+                        <label for="modalDate">Date</label>
+                        <input type="date" id="modalDate" required>
+                    </div>
+                </div>
+
+                <div class="modal-group">
+                    <label for="modalCat">Category</label>
+                    <select id="modalCat" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Food">Food & Dining</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Utilities">Utilities & Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="save-transaction-btn">Save Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
