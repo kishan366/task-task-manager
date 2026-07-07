@@ -2,7 +2,7 @@ function checkAuth() {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
         alert('Access Denied. Please login first!');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return null;
     }
     return JSON.parse(currentUser);
@@ -71,7 +71,7 @@ function executeSignOut() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('currency_' + (activeUser ? activeUser.email : ''));
     setTimeout(function() {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     }, 100);
 }
 
